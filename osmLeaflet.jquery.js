@@ -1,4 +1,5 @@
 (function ($) {
+    // Default values
     var defaults = {
 	zoom : 10,
 	maxZoom : 18,
@@ -6,13 +7,16 @@
 	longitude : 0,
 	cloudmadeAttribution : 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade, osmLeaflet.jQuery by Mathieu ROBIN'
     },
+    // Settings based on merged defaults with user settings
     settings,
+    // The map element gived by leaflet API
     map,
+    // List of available methods
     methods = {
 	/**
 	 * Initialize the map, it's the default called method if no-one is given
 	 *
-	 * @param options Array which can contains this options : latitude, longitude, zoom, cloudmadeAttribution
+	 * @param options Array which can contains this options : latitude, longitude, zoom, markers, popup, cloudmadeAttribution
 	 * @return jQuery Object containing the DOM element extended
 	 */
 	init : function (options) {
@@ -40,6 +44,12 @@
 		}
 	    });
 	},
+	/**
+	 * Put one or more markers on the map
+	 *
+	 * @param options Array or Object which can contains this options : latitude, longitude
+	 * @return jQuery Object containing the DOM element extended
+	 */
 	addMarker : function (options) {
 	    var that = this;
 	    return this.each(function () {
@@ -57,6 +67,12 @@
 		}
 	    });
 	},
+	/**
+	 * Put a popup on the map
+	 *
+	 * @param options Object which can contains this options : latitude, longitude, content, autoPan
+	 * @return jQuery Object containing the DOM element extended
+	 */
 	addPopup : function (options) {
 	    return this.each(function () {
 		if("undefined" !== typeof options) {
@@ -71,6 +87,9 @@
 	}
     };
 
+    /**
+     * Bootstrap method, must be not modified
+     */
     $.fn.osmLeaflet = function (method) {
 	if(methods[method]) {
 	    return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
