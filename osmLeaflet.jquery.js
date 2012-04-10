@@ -25,7 +25,7 @@
 	/**
 	 * Initialize the map, it's the default called method if no-one is given
 	 *
-	 * @param options Array which can contains this options : latitude, longitude, zoom, markers, popup, cloudmadeAttribution
+	 * @param options Array which can contains this options : latitude, longitude, zoom, markers, popup, cloudmadeAttribution, click event
 	 * @return jQuery Object containing the DOM element extended
 	 */
 	init : function (options) {
@@ -43,6 +43,12 @@
 		});
 
 		map.setView(new L.LatLng(settings.latitude, settings.longitude), settings.zoom).addLayer(cloudmade);
+
+		if("undefined" !== typeof options.click) {
+		    if("function" === typeof options.click) {
+			map.on('click', options.click);
+		    }
+		}
 
 		if("undefined" !== typeof options.markers) {
 		    that.osmLeaflet('addMarker', options.markers);
@@ -66,6 +72,9 @@
 		    if("undefined" === typeof options.length) {
 			var markerLocation = new L.LatLng(options.latitude, options.longitude);
 			var marker = new L.Marker(markerLocation);
+			if("undefined" !== typeof options.click) {
+			    marker.bindPopup(options.click.content, options.click);
+			}
 			map.addLayer(marker);
 		    }
 		    else {
@@ -91,6 +100,21 @@
 		    popup.setContent(options.content);
 
 		    map.openPopup(popup);
+		}
+	    });
+	},
+	/**
+	 * Define handler for the click event
+	 *
+	 * @param callback function Event could be retrieved by the parameter
+	 * @return jQuery Object containing the DOM element extended
+	 */
+	onClick : function (callback) {
+	    return this.each(function () {
+		if("undefined" !== typeof callback) {
+		    if("function" === typeof callback) {
+			map.on('click', callback);
+		    }
 		}
 	    });
 	}
