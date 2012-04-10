@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>osmLeaflet.jQuery, plugin jQuery pour Open Street Map</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="osmLeaflet.jQuery, plugin jQuery pour Open Street Map via Leaflet" />
+	<link rel="stylesheet" type="text/css" href="css/kickstart.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.css" />
+	<!--[if lte IE 8]>
+	    <link rel="stylesheet" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.ie.css" />
+	<![endif]-->
+	<script type="text/javascript">
+	    var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-18447506-1']);
+	    _gaq.push(['_trackPageview']);
+	    (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	    })();
+	</script>
+    </head>
+    <body>
+	<a id="top-of-page"></a>
+	<a href="https://github.com/MathRobin/osmLeaflet.jQuery"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
+	<div id="wrap" class="clearfix">
+	    <div id="map1" style="height: 216px; width: 960px;"></div>
+	    <div class="col_12">
+		<h4>Qu'est-ce que osmLeaflet.jQuery ?</h4>
+		<p>C'est un plugin jQuery (encore en alpha) qui vient vous aider à manipuler l'API de <a href="http://leaflet.cloudmade.com/" target="_blank" alt="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade" title="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade">Leaflet</a> pour afficher des cartes basées sur <a href="http://www.openstreetmap.org/" target="_blank" alt="OpenStreetMap" title="OpenStreetMap">Open Street Map</a>.</p>
+		<h4>Capacités</h4>
+		<div class="col_4">
+		    <ul class="checks">
+			<li>Instances multiples</li>
+			<li>Choisir le niveau de zoom initial</li>
+			<li>Puis jouer avec votre molette ou les boutons de zoom</li>
+			<li>Placer des marqueurs</li>
+			<li>Placer des popups</li>
+			<li>Et donner leur un contenu riche en HTML</li>
+		    </ul>
+		</div>
+		<div class="col_5">
+		    <ul class="checks">
+			<li>Positionner une carte facilement</li>
+			<li>Licence BSD, faites ce que vous voulez</li>
+			<li>Sans contrainte de droits d'auteur</li>
+			<li>API simplifiée par rapport à <a href="http://leaflet.cloudmade.com/" target="_blank" alt="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade" title="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade">Leaflet</a></li>
+			<li>Repose sur Leaflet et <a href="http://www.openstreetmap.org/" target="_blank" alt="OpenStreetMap" title="OpenStreetMap">Open Street Map</a></li>
+		    </ul>
+		</div>
+		<div class="facebook-box">
+		    <iframe src="http://www.facebook.com/plugins/likebox.php?id=124128901045591&amp;width=220&amp;connections=10&amp;stream=false&amp;header=false&amp;height=300" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:220px; height:300px;" allowtransparency="true"></iframe>
+		</div>
+		<h4>Démonstration</h4>
+		<ul class="tabs">
+		    <li class="first current"><a href="#media-example">Exemple</a></li>
+		    <li class=""><a href="#media-code">Code</a></li>
+		</ul>
+		<div id="media-example" class="tab-content clearfix" style="display: block; ">
+		    <div id="mini_map" style="height: 140px; width: 700px;"></div>
+		</div>
+		<div id="media-code" class="tab-content clearfix" style="display: block; ">
+		    <pre class="js prettyprint">&lt;div id="mini_map" style="height: 140px; width: 700px;"&gt;&lt;/div&gt;
+$("#mini_map").osmLeaflet({
+    zoom : 9,
+    latitude : 48.833,
+    longitude : 2.333
+}).osmLeaflet('addPopup', {
+    latitude : 48.859,
+    longitude : 2.333,
+    text : 'Hello !'
+});</pre>
+		</div>
+		<h4>Suivre</h4>
+		<a href="https://github.com/MathRobin/osmLeaflet.jQuery" alt="Github" title="Github"><span class="icon social large blue" data-icon="i" title="Github" style="display: inline-block; "></span></a>
+		<a href="http://www.facebook.com/PluginOsmLeafletjQuery/" alt="Facebook" title="Facebook"><span class="icon social x-large blue" data-icon="F"></span></a>
+		<a class="button orange small" href="http://www.mathieurobin.com/tag/osmleaflet-jquery/feed/" alt="Flux RSS" title="Flux RSS"><span class="icon social" data-icon="r" style="display: inline-block; "></span> RSS</a>
+		<h4>Documentation</h4>
+		<table class="striped" cellspacing="0" cellpadding="0">
+		    <thead>
+			<tr class="alt first last">
+			    <th>Méthode</th>
+			    <th>Description</th>
+			</tr>
+		    </thead>
+		    <tbody>
+			<tr class="first">
+			    <th>init</th>
+			    <td>Permet de mettre en place la carte. Appelée par défaut si pas de paramètres.<br /><br />Prend les options suivantes :
+				<table class="striped" cellspacing="0" cellpadding="0">
+				    <thead>
+					<tr class="alt first last">
+					    <th>Nom</th>
+					    <th>Type</th>
+					    <th>Obligatoire</th>
+					    <th>Description</th>
+					</tr>
+				    </thead>
+				    <tbody>
+					<tr class="first">
+					    <th>latitude</th>
+					    <td>Nombre</td>
+					    <td>Oui</td>
+					    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+					</tr>
+					<tr class="alt">
+					    <th>longitude</th>
+					    <td>Nombre</td>
+					    <td>Oui</td>
+					    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+					</tr>
+					<tr>
+					    <th>markers</th>
+					    <td>Tableau</td>
+					    <td>Non</td>
+					    <td>Contient la liste des markers que vous souhaitez mettre en place, avec leur caractéristiques.</td>
+					</tr>
+					<tr class="alt">
+					    <th>popups</th>
+					    <td>Tableau</td>
+					    <td>Non</td>
+					    <td>Contient la liste des popups que vous souhaitez mettre en place, avec leur caractéristiques.</td>
+					</tr>
+					<tr class="last">
+					    <th>zoom</th>
+					    <td>Nombre</td>
+					    <td>Non</td>
+					    <td>Niveau de zoom de la carte. Compris entre 1 et 18.</td>
+					</tr>
+				    </tbody>
+				</table>
+			    </td>
+			</tr>
+			<tr class="alt">
+			    <th>addMarker</th>
+			    <td>Permet de placer un pointeur sur la carte.<br /><br />Prend les options suivantes :
+				<table class="striped" cellspacing="0" cellpadding="0">
+				    <thead>
+					<tr class="alt first last">
+					    <th>Nom</th>
+					    <th>Type</th>
+					    <th>Obligatoire</th>
+					    <th>Description</th>
+					</tr>
+				    </thead>
+				    <tbody>
+					<tr class="first">
+					    <th>latitude</th>
+					    <td>Nombre</td>
+					    <td>Oui</td>
+					    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+					</tr>
+					<tr class="last">
+					    <th>longitude</th>
+					    <td>Nombre</td>
+					    <td>Oui</td>
+					    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+					</tr>
+				    </tbody>
+				</table>
+			    </td>
+			</tr>
+			<tr class="last">
+			    <th>addPopup</th>
+			    <td>Permet de placer une infobulle sur la carte.<br /><br />Prend les options suivantes :
+				<table class="striped" cellspacing="0" cellpadding="0">
+				    <thead>
+					<tr class="alt first last">
+					    <th>Nom</th>
+					    <th>Type</th>
+					    <th>Obligatoire</th>
+					    <th>Description</th>
+					</tr>
+				    </thead>
+				    <tbody>
+					<tr class="first">
+					    <th>content</th>
+					    <td>Chaîne</td>
+					    <td>Non</td>
+					    <td>Contenu textuel de l'élément que vous souhaitez positionner.</td>
+					</tr>
+					<tr class="alt">
+					    <th>latitude</th>
+					    <td>Nombre</td>
+					    <td>Oui</td>
+					    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+					</tr>
+					<tr>
+					    <th>longitude</th>
+					    <td>Nombre</td>
+					    <td>Oui</td>
+					    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+					</tr>
+					<tr class="alt last">
+					    <th>zoom</th>
+					    <td>Nombre</td>
+					    <td>Non</td>
+					    <td>Niveau de zoom de la carte. Compris entre 1 et 18.</td>
+					</tr>
+				    </tbody>
+				</table>
+			    </td>
+			</tr>
+		    </tbody>
+		</table>
+	    </div>
+	    <div id="map2" style="height: 216px; width: 960px;"></div>
+	</div>
+	<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script type="text/javascript" src="js/prettify.js"></script>
+	<script type="text/javascript" src="js/kickstart.js"></script>
+	<script type="text/javascript" src="http://code.leafletjs.com/leaflet-0.3.1/leaflet.js"></script>
+	<script type="text/javascript" src="osmLeaflet.jquery.js"></script>
+	<script>
+	    $(document).ready(function () {
+		$("#map1").osmLeaflet({
+		    zoom : 12,
+		    latitude : 51.50,
+		    longitude : -0.09
+		}).osmLeaflet('addMarker', {
+		    latitude : 51.50,
+		    longitude : -0.09
+		}).osmLeaflet('addPopup', {
+		    latitude : 51.51,
+		    longitude : -0.13,
+		    content : '<b>Hey !</b> Bienvenue sur le site de <a href="http://www.mathieurobin.com/osmLeaflet/" target="_blank">osmLeaflet.jQuery</a>'
+		});
+		$("#mini_map").osmLeaflet({
+		    zoom : 9,
+		    latitude : 48.833,
+		    longitude : 2.333
+		}).osmLeaflet('addPopup', {
+		    latitude : 48.859,
+		    longitude : 2.333,
+		    content : 'Hello !'
+		});
+		$("#map2").osmLeaflet({
+		    zoom : 2,
+		    latitude : 21.50,
+		    longitude : 22.5
+		}).osmLeaflet('addPopup', {
+		    latitude : 21.51,
+		    longitude : 22.54,
+		    content : 'Bonne journée !'
+		});
+	    });
+	</script>
+    </body>
+</html>
