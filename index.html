@@ -113,12 +113,18 @@ $("#mini_map").osmLeaflet({
 			    <td>Contient la liste des marqueurs que vous souhaitez mettre en place, avec leur caractéristiques.</td>
 			</tr>
 			<tr class="alt">
+			    <th>onClick</th>
+			    <td>Fonction</td>
+			    <td>Non</td>
+			    <td>Fonction de callback à appeler au moment du clic quelque part sur la carte. Peut prendre un paramètre décrivant l'évènement.</td>
+			</tr>
+			<tr>
 			    <th>popup</th>
 			    <td>Objet</td>
 			    <td>Non</td>
 			    <td>Contient la description de la popup que vous souhaitez mettre en place.</td>
 			</tr>
-			<tr class="last">
+			<tr class="alt last">
 			    <th>zoom</th>
 			    <td>Nombre</td>
 			    <td>Non</td>
@@ -140,6 +146,12 @@ $("#mini_map").osmLeaflet({
 		    </thead>
 		    <tbody>
 			<tr class="first">
+			    <th>click</th>
+			    <td>Objet</td>
+			    <td>Non</td>
+			    <td>Ouvre une popup décrit en paramètre au clic sur le marqueur.</td>
+			</tr>
+			<tr class="alt">
 			    <th>latitude</th>
 			    <td>Nombre</td>
 			    <td>Oui</td>
