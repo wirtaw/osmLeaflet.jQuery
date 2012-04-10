@@ -1,3 +1,12 @@
+/**
+ * osmLeaflet.jQuery
+ * jQuery plugin, wrapper for the Leaflet API
+ *
+ * @author Mathieu ROBIN
+ * @link http://www.mathieurobin.com/osmLeaflet
+ * @copyright CreativeCommons BY
+ * @version 1.0
+ */
 (function ($) {
     // Default values
     var defaults = {
