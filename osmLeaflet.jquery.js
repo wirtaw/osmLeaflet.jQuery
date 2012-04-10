@@ -26,21 +26,32 @@
 	    });
 	},
 	addMarker : function (options) {
+	    var that = this;
 	    return this.each(function () {
-		var markerLocation = new L.LatLng(options.latitude, options.longitude);
-
-		var marker = new L.Marker(markerLocation);
-		map.addLayer(marker);
+		if("undefined" !== typeof options) {
+		    if("undefined" === typeof options.length) {
+			var markerLocation = new L.LatLng(options.latitude, options.longitude);
+			var marker = new L.Marker(markerLocation);
+			map.addLayer(marker);
+		    }
+		    else {
+			for(marker in options) {
+			    that.osmLeaflet('addMarker', options[marker]);
+			}
+		    }
+		}
 	    });
 	},
 	addPopup : function (options) {
 	    return this.each(function () {
-		var popup = new L.Popup();
+		if("undefined" !== typeof options) {
+		    var popup = new L.Popup();
 
-		popup.setLatLng(new L.LatLng(options.latitude, options.longitude));
-		popup.setContent(options.content);
+		    popup.setLatLng(new L.LatLng(options.latitude, options.longitude));
+		    popup.setContent(options.content);
 
-		map.openPopup(popup);
+		    map.openPopup(popup);
+		}
 	    });
 	}
     };

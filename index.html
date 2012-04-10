@@ -216,7 +216,7 @@ $("#mini_map").osmLeaflet({
 	<script>
 	    $(document).ready(function () {
 		$("#map1").osmLeaflet({
-		    zoom : 12,
+		    zoom : 10,
 		    latitude : 51.50,
 		    longitude : -0.09
 		}).osmLeaflet('addMarker', {
@@ -226,7 +226,16 @@ $("#mini_map").osmLeaflet({
 		    latitude : 51.51,
 		    longitude : -0.13,
 		    content : '<b>Hey !</b> Bienvenue sur le site de <a href="http://www.mathieurobin.com/osmLeaflet/" target="_blank">osmLeaflet.jQuery</a>'
-		});
+		}).osmLeaflet('addMarker', [{
+		    latitude : 49.50,
+		    longitude : -0.09
+		},{
+		    latitude : 49.40,
+		    longitude : -0.09
+		},{
+		    latitude : 49.30,
+		    longitude : -0.09
+		}]);
 		$("#mini_map").osmLeaflet({
 		    zoom : 9,
 		    latitude : 48.833,
