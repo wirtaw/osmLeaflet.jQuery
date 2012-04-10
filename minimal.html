@@ -29,10 +29,11 @@
 		});
 		// Placement d'une popup
 		$map.osmLeaflet('addPopup', {
-		    latitude : 51.54,
+		    latitude : 54.54,
 		    longitude : -0.17,
 		    // Les popups leaflet supportent le contenu HTML
-		    content : '<b>Hello !</b>'
+		    content : '<b>Hello !</b>',
+		    autoPan : true
 		});
 		// Placement de plusieurs marqueurs en une seule fois
 		$map.osmLeaflet('addMarker', [{

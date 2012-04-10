@@ -9,7 +9,14 @@
     settings,
     map,
     methods = {
+	/**
+	 * Initialize the map, it's the default called method if no-one is given
+	 *
+	 * @param options Array which can contains this options : latitude, longitude, zoom, cloudmadeAttribution
+	 * @return jQuery Object containing the DOM element extended
+	 */
 	init : function (options) {
+	    var that = this;
 	    return this.each(function () {
 		if(options) {
 		    settings = $.extend(defaults, options);
@@ -23,6 +30,14 @@
 		});
 
 		map.setView(new L.LatLng(settings.latitude, settings.longitude), settings.zoom).addLayer(cloudmade);
+
+		if("undefined" !== typeof options.markers) {
+		    that.osmLeaflet('addMarker', options.markers);
+		}
+
+		if("undefined" !== typeof options.popup) {
+		    that.osmLeaflet('addPopup', options.popup);
+		}
 	    });
 	},
 	addMarker : function (options) {

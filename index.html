@@ -77,130 +77,124 @@ $("#mini_map").osmLeaflet({
 		<a href="http://www.facebook.com/PluginOsmLeafletjQuery/" alt="Facebook" title="Facebook"><span class="icon social x-large blue" data-icon="F"></span></a>
 		<a class="button orange small" href="http://www.mathieurobin.com/tag/osmleaflet-jquery/feed/" alt="Flux RSS" title="Flux RSS"><span class="icon social" data-icon="r" style="display: inline-block; "></span> RSS</a>
 		<h4>Documentation</h4>
+		<ul>
+		    <li><a href="#methods_init">init</a></li>
+		    <li><a href="#methods_addmarker">addMarker</a></li>
+		    <li><a href="#methods_addpopup">addPopup</a></li>
+		</ul>
+		<a name="methods_init"></a><h5><i>init</i></h5>
+		<p>Mets en place la carte. Appelée par défaut si pas de paramètres.<br /><br />Prend les options suivantes :</p>
 		<table class="striped" cellspacing="0" cellpadding="0">
 		    <thead>
 			<tr class="alt first last">
-			    <th>Méthode</th>
+			    <th>Nom</th>
+			    <th>Type</th>
+			    <th>Obligatoire</th>
 			    <th>Description</th>
 			</tr>
 		    </thead>
 		    <tbody>
 			<tr class="first">
-			    <th>init</th>
-			    <td>Permet de mettre en place la carte. Appelée par défaut si pas de paramètres.<br /><br />Prend les options suivantes :
-				<table class="striped" cellspacing="0" cellpadding="0">
-				    <thead>
-					<tr class="alt first last">
-					    <th>Nom</th>
-					    <th>Type</th>
-					    <th>Obligatoire</th>
-					    <th>Description</th>
-					</tr>
-				    </thead>
-				    <tbody>
-					<tr class="first">
-					    <th>latitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr class="alt">
-					    <th>longitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr>
-					    <th>markers</th>
-					    <td>Tableau</td>
-					    <td>Non</td>
-					    <td>Contient la liste des markers que vous souhaitez mettre en place, avec leur caractéristiques.</td>
-					</tr>
-					<tr class="alt">
-					    <th>popups</th>
-					    <td>Tableau</td>
-					    <td>Non</td>
-					    <td>Contient la liste des popups que vous souhaitez mettre en place, avec leur caractéristiques.</td>
-					</tr>
-					<tr class="last">
-					    <th>zoom</th>
-					    <td>Nombre</td>
-					    <td>Non</td>
-					    <td>Niveau de zoom de la carte. Compris entre 1 et 18.</td>
-					</tr>
-				    </tbody>
-				</table>
-			    </td>
+			    <th>latitude</th>
+			    <td>Nombre</td>
+			    <td>Oui</td>
+			    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
 			</tr>
 			<tr class="alt">
-			    <th>addMarker</th>
-			    <td>Permet de placer un pointeur sur la carte.<br /><br />Prend les options suivantes :
-				<table class="striped" cellspacing="0" cellpadding="0">
-				    <thead>
-					<tr class="alt first last">
-					    <th>Nom</th>
-					    <th>Type</th>
-					    <th>Obligatoire</th>
-					    <th>Description</th>
-					</tr>
-				    </thead>
-				    <tbody>
-					<tr class="first">
-					    <th>latitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr class="last">
-					    <th>longitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-				    </tbody>
-				</table>
-			    </td>
+			    <th>longitude</th>
+			    <td>Nombre</td>
+			    <td>Oui</td>
+			    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+			</tr>
+			<tr>
+			    <th>markers</th>
+			    <td>Tableau</td>
+			    <td>Non</td>
+			    <td>Contient la liste des markers que vous souhaitez mettre en place, avec leur caractéristiques.</td>
+			</tr>
+			<tr class="alt">
+			    <th>popup</th>
+			    <td>Objet</td>
+			    <td>Non</td>
+			    <td>Contient la description de la popup que vous souhaitez mettre en place.</td>
 			</tr>
 			<tr class="last">
-			    <th>addPopup</th>
-			    <td>Permet de placer une infobulle sur la carte.<br /><br />Prend les options suivantes :
-				<table class="striped" cellspacing="0" cellpadding="0">
-				    <thead>
-					<tr class="alt first last">
-					    <th>Nom</th>
-					    <th>Type</th>
-					    <th>Obligatoire</th>
-					    <th>Description</th>
-					</tr>
-				    </thead>
-				    <tbody>
-					<tr class="first">
-					    <th>content</th>
-					    <td>Chaîne</td>
-					    <td>Non</td>
-					    <td>Contenu textuel de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr class="alt">
-					    <th>latitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr>
-					    <th>longitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr class="alt last">
-					    <th>zoom</th>
-					    <td>Nombre</td>
-					    <td>Non</td>
-					    <td>Niveau de zoom de la carte. Compris entre 1 et 18.</td>
-					</tr>
-				    </tbody>
-				</table>
-			    </td>
+			    <th>zoom</th>
+			    <td>Nombre</td>
+			    <td>Non</td>
+			    <td>Niveau de zoom de la carte. Compris entre 1 et 18.</td>
+			</tr>
+		    </tbody>
+		</table>
+		<br />
+		<a name="methods_addmarker"></a><h5><i>addMarker</i></h5>
+		<p>Permet de placer un pointeur sur la carte.<br /><br />Prend les options suivantes :</p>
+		<table class="striped" cellspacing="0" cellpadding="0">
+		    <thead>
+			<tr class="alt first last">
+			    <th>Nom</th>
+			    <th>Type</th>
+			    <th>Obligatoire</th>
+			    <th>Description</th>
+			</tr>
+		    </thead>
+		    <tbody>
+			<tr class="first">
+			    <th>latitude</th>
+			    <td>Nombre</td>
+			    <td>Oui</td>
+			    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+			</tr>
+			<tr class="last">
+			    <th>longitude</th>
+			    <td>Nombre</td>
+			    <td>Oui</td>
+			    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+			</tr>
+		    </tbody>
+		</table>
+		<br />
+		<a name="methods_addpopup"></a><h5><i>addPopup</i></h5>
+		<p>Permet de placer une infobulle sur la carte.<br /><br />Prend les options suivantes :</p>
+		<table class="striped" cellspacing="0" cellpadding="0">
+		    <thead>
+			<tr class="alt first last">
+			    <th>Nom</th>
+			    <th>Type</th>
+			    <th>Obligatoire</th>
+			    <th>Description</th>
+			</tr>
+		    </thead>
+		    <tbody>
+			<tr class="first">
+			    <th>content</th>
+			    <td>Chaîne</td>
+			    <td>Non</td>
+			    <td>Contenu textuel de l'élément que vous souhaitez positionner.</td>
+			</tr>
+			<tr class="alt">
+			    <th>latitude</th>
+			    <td>Nombre</td>
+			    <td>Oui</td>
+			    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+			</tr>
+			<tr>
+			    <th>longitude</th>
+			    <td>Nombre</td>
+			    <td>Oui</td>
+			    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+			</tr>
+			<tr class="alt last">
+			    <th>autopan</th>
+			    <td>Booléen</td>
+			    <td>Non</td>
+			    <td>Par défaut à <i>true</i>. Permet de désactiver l'effet pan si vous le souhaiter quand la carte s'adapte à la position de la popup.</td>
+			</tr>
+			<tr class="last">
+			    <th>zoom</th>
+			    <td>Nombre</td>
+			    <td>Non</td>
+			    <td>Niveau de zoom de la carte. Compris entre 1 et 18.</td>
 			</tr>
 		    </tbody>
 		</table>
@@ -227,15 +221,15 @@ $("#mini_map").osmLeaflet({
 		    longitude : -0.13,
 		    content : '<b>Hey !</b> Bienvenue sur le site de <a href="http://www.mathieurobin.com/osmLeaflet/" target="_blank">osmLeaflet.jQuery</a>'
 		}).osmLeaflet('addMarker', [{
-		    latitude : 49.50,
-		    longitude : -0.09
-		},{
-		    latitude : 49.40,
-		    longitude : -0.09
-		},{
-		    latitude : 49.30,
-		    longitude : -0.09
-		}]);
+			latitude : 49.50,
+			longitude : -0.09
+		    },{
+			latitude : 49.40,
+			longitude : -0.09
+		    },{
+			latitude : 49.30,
+			longitude : -0.09
+		    }]);
 		$("#mini_map").osmLeaflet({
 		    zoom : 9,
 		    latitude : 48.833,
