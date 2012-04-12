@@ -7,6 +7,7 @@
  * @copyright CreativeCommons BY
  * @version 1.0
  */
+/*jslint browser: true, sloppy: true, white: true, maxerr: 50, indent: 4 */
 (function ($) {
     // Default values
     var defaults = {
@@ -68,10 +69,11 @@
 	addMarker : function (options) {
 	    var that = this;
 	    return this.each(function () {
+            var marker = null, markerLocation = null;
 		if("undefined" !== typeof options) {
 		    if("undefined" === typeof options.length) {
-			var markerLocation = new L.LatLng(options.latitude, options.longitude);
-			var marker = new L.Marker(markerLocation);
+			markerLocation = new L.LatLng(options.latitude, options.longitude);
+            marker = new L.Marker(markerLocation);
 			if("undefined" !== typeof options.click) {
 			    marker.bindPopup(options.click.content, options.click);
 			}
