@@ -32,16 +32,17 @@
 		<h4>Capacités</h4>
 		<div class="col_4">
 		    <ul class="checks">
-			<li>Instances multiples</li>
 			<li>Choisir le niveau de zoom initial</li>
 			<li>Puis jouer avec votre molette ou les boutons de zoom</li>
 			<li>Placer des marqueurs</li>
-			<li>Placer des popups</li>
-			<li>Et donner leur un contenu riche en HTML</li>
+			<li>Placer une popup</li>
+			<li>Et lui donner un contenu riche en HTML</li>
+			<li>Réagir aux évènements</li>
 		    </ul>
 		</div>
 		<div class="col_5">
 		    <ul class="checks">
+			<li>Instances multiples</li>
 			<li>Positionner une carte facilement</li>
 			<li>Licence BSD, faites ce que vous voulez</li>
 			<li>Sans contrainte de droits d'auteur</li>
@@ -55,22 +56,42 @@
 		<h4>Démonstration</h4>
 		<ul class="tabs">
 		    <li class="first current"><a href="#media-example">Exemple</a></li>
-		    <li class=""><a href="#media-code">Code</a></li>
+		    <li class=""><a href="#media-code">Code avec osmLeaflet.jQuery</a></li>
+		    <li class=""><a href="#media-fullcode">Code avec Leaflet seul</a></li>
 		</ul>
 		<div id="media-example" class="tab-content clearfix" style="display: block; ">
-		    <div id="mini_map" style="height: 140px; width: 700px;"></div>
+		    <div id="mini_map" style="height: 140px; width: 800px;"></div>
 		</div>
 		<div id="media-code" class="tab-content clearfix" style="display: block; ">
-		    <pre class="js prettyprint">&lt;div id="mini_map" style="height: 140px; width: 700px;"&gt;&lt;/div&gt;
+		    <pre class="js prettyprint">&lt;div id="mini_map" style="height: 140px; width: 800px;"&gt;&lt;/div&gt;
+// Passer un objet JSON et c'est tout. Pour créer une autre instance : changez l'id passé au sélecteur jQuery.
 $("#mini_map").osmLeaflet({
     zoom : 9,
     latitude : 48.833,
-    longitude : 2.333
-}).osmLeaflet('addPopup', {
-    latitude : 48.859,
     longitude : 2.333,
-    text : 'Hello !'
-});</pre>
+    popup : {
+	latitude : 48.859,
+	longitude : 2.333,
+	text : 'Hello !'
+    }
+});
+		    </pre>
+		</div>
+		<div id="media-fullcode" class="tab-content clearfix" style="display: block; ">
+		    <pre class="js prettyprint">&lt;div id="mini_map" style="height: 140px; width: 800px;"&gt;&lt;/div&gt;
+// Pas d'objet JSON, un peu plus verbeux mais moins lisible, non ? Pour créer une autre instance : changez le nom de variable de la carte et le sélecteur.
+var map = new L.Map("mini_map"),
+    cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+	attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade'
+    }),
+    popup = new L.Popup();
+map.setView(new L.LatLng(48.833, 2.333, 9).addLayer(cloudmade);
+
+popup.setLatLng(new L.LatLng(48.859, 2.333));
+popup.setContent('Hello !');
+map.openPopup(popup);
+		    </pre>
 		</div>
 		<h4>Suivre</h4>
 		<a href="https://github.com/MathRobin/osmLeaflet.jQuery" alt="Github" title="Github"><span class="icon social large blue" data-icon="i" title="Github" style="display: inline-block; "></span></a>
@@ -78,11 +99,12 @@ $("#mini_map").osmLeaflet({
 		<a class="button orange small" href="http://www.mathieurobin.com/tag/osmleaflet-jquery/feed/" alt="Flux RSS" title="Flux RSS"><span class="icon social" data-icon="r" style="display: inline-block; "></span> RSS</a>
 		<h4>Documentation</h4>
 		<ul>
-		    <li><a href="#methods_init">init</a></li>
-		    <li><a href="#methods_addmarker">addMarker</a></li>
-		    <li><a href="#methods_addpopup">addPopup</a></li>
+		    <li><a href="#methods_init">init (options)</a></li>
+		    <li><a href="#methods_addmarker">addMarker (options)</a></li>
+		    <li><a href="#methods_addpopup">addPopup (options)</a></li>
+		    <li><a href="#methods_onclick">onClick (callback)</a></li>
 		</ul>
-		<a name="methods_init"></a><h5><i>init</i></h5>
+		<a name="methods_init"></a><h5><i>init (options)</i></h5>
 		<p>Mets en place la carte. Appelée par défaut si pas de paramètres.<br /><br />Prend les options suivantes :</p>
 		<table class="striped" cellspacing="0" cellpadding="0">
 		    <thead>
@@ -116,7 +138,7 @@ $("#mini_map").osmLeaflet({
 			    <th>onClick</th>
 			    <td>Fonction</td>
 			    <td>Non</td>
-			    <td>Fonction de callback à appeler au moment du clic quelque part sur la carte. Peut prendre un paramètre décrivant l'évènement.</td>
+			    <td>Fonction de callback à appeler au moment du clic quelque part sur la carte. Cette fonction prend en paramètre l'objet d'évènement.</td>
 			</tr>
 			<tr>
 			    <th>popup</th>
@@ -133,7 +155,7 @@ $("#mini_map").osmLeaflet({
 		    </tbody>
 		</table>
 		<br />
-		<a name="methods_addmarker"></a><h5><i>addMarker</i></h5>
+		<a name="methods_addmarker"></a><h5><i>addMarker (options)</i></h5>
 		<p>Permet de placer un ou plusieurs marqueur(s) sur la carte.<br /><br />Prend les options suivantes (ou un tableau de ces options) :</p>
 		<table class="striped" cellspacing="0" cellpadding="0">
 		    <thead>
@@ -166,8 +188,8 @@ $("#mini_map").osmLeaflet({
 		    </tbody>
 		</table>
 		<br />
-		<a name="methods_addpopup"></a><h5><i>addPopup</i></h5>
-		<p>Permet de placer une infobulle sur la carte.<br /><br />Prend les options suivantes :</p>
+		<a name="methods_addpopup"></a><h5><i>addPopup (options)</i></h5>
+		<p>Permet de placer une infobulle sur la carte. L'API de Leaflet n'autorise pas l'affichage de plus d'une popup à la fois par carte.<br /><br />Prend les options suivantes :</p>
 		<table class="striped" cellspacing="0" cellpadding="0">
 		    <thead>
 			<tr class="alt first last">
@@ -196,7 +218,7 @@ $("#mini_map").osmLeaflet({
 			    <td>Oui</td>
 			    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
 			</tr>
-			<tr class="alt last">
+			<tr class="alt">
 			    <th>autopan</th>
 			    <td>Booléen</td>
 			    <td>Non</td>
@@ -210,6 +232,34 @@ $("#mini_map").osmLeaflet({
 			</tr>
 		    </tbody>
 		</table>
+		<br />
+		<a name="methods_onclick"></a><h5><i>onClick (callback)</i></h5>
+		<p>Appelle la fonction de callback passée en paramètre sur clic dans n'importe quelle région de la carte. Peut aussi prendre un objet de type <a href="http://www.jquery.com/Deferred" target="_blank" alt="jQuery - Deferred" title="jQuery - Deferred">Deferred</a>.<br /><br />Prend le paramètre suivant :</p>
+		<table class="striped" cellspacing="0" cellpadding="0">
+		    <thead>
+			<tr class="alt first last">
+			    <th>Nom</th>
+			    <th>Type</th>
+			    <th>Obligatoire</th>
+			    <th>Description</th>
+			</tr>
+		    </thead>
+		    <tbody>
+			<tr class="first">
+			    <th>callback <a href="#tips_onclick" alt="Voir plus bas" title="Voir plus bas">*</a></th>
+			    <td>Fonction</td>
+			    <td>Oui</td>
+			    <td>Fonction de callback appelée sur clic sur la carte.</td>
+			</tr>
+			<tr class="alt last">
+			    <th>callback <a href="#tips_onclick" alt="Voir plus bas" title="Voir plus bas">*</a></th>
+			    <td>Deferred</td>
+			    <td>Oui</td>
+			    <td>Objet de callback qui passera à l'état résolu sur clic sur la carte. Implique de n'être exécuté qu'une seule fois. Pour les spécificités liées à l'objet <a href="http://www.jquery.com/Deferred" target="_blank" alt="jQuery - Deferred" title="jQuery - Deferred">Deferred</a>, se référer à la documentation officielle.</td>
+			</tr>
+		    </tbody>
+		</table>
+		<a name="tips_onclick"></a><small>* L'un ou l'autre, au choix</small>
 	    </div>
 	    <div id="map2" style="height: 216px; width: 960px;"></div>
 	</div>

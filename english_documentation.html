@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-	<title>osmLeaflet.jQuery, jQuery plugin for Open Street Map</title>
+	<title>osmLeaflet.jQuery, a jQuery plugin for Open Street Map</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="osmLeaflet.jQuery, jQuery plugin for Open Street Map using Leaflet" />
+	<meta name="description" content="osmLeaflet.jQuery, a jQuery plugin for Open Street Map via Leaflet" />
 	<link rel="stylesheet" type="text/css" href="css/kickstart.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="style.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.css" />
@@ -28,182 +28,238 @@
 	    <div id="map1" style="height: 216px; width: 960px;"></div>
 	    <div class="col_12">
 		<h4>What is osmLeaflet.jQuery?</h4>
-		<p>It's a jQuery plugin (alpha version) which is dedicated to help you using <a href="http://leaflet.cloudmade.com/" target="_blank" alt="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade" title="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade">Leaflet</a> API to display maps based on <a href="http://www.openstreetmap.org/" target="_blank" alt="OpenStreetMap" title="OpenStreetMap">Open Street Map</a>.</p>
-		<h4>Features</h4>
+		<p>It's a jQuery plugin (alpha) which is designed to help you in using the <a href="http://leaflet.cloudmade.com/" target="_blank" alt="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade" title="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade">Leaflet</a> API to display maps based on <a href="http://www.openstreetmap.org/" target="_blank" alt="OpenStreetMap" title="OpenStreetMap">Open Street Map</a>.</p>
+		<h4>Skills</h4>
 		<div class="col_4">
 		    <ul class="checks">
-			<li>Multiple instances</li>
-			<li>Choose the initial level of zoom</li>
-			<li>Then play with your wheel or with the buttons</li>
+			<li>Choose the zoom level at initialization</li>
+			<li>And play with the wheel and map's buttons</li>
 			<li>Put markers</li>
-			<li>Put popups</li>
-			<li>And give it rich HTML content</li>
+			<li>Put a popup</li>
+			<li>Give it a rich HTML content</li>
+			<li>Handle maps events</li>
 		    </ul>
 		</div>
 		<div class="col_5">
 		    <ul class="checks">
-			<li>Customize easily a map</li>
-			<li>BSD licence, do what you want</li>
-			<li>Without any limits</li>
+			<li>Multiples instances</li>
+			<li>Manage maps easily</li>
+			<li>BSD Licence, do what you want</li>
+			<li>Without any constraints</li>
 			<li>Simplified API in comparison of <a href="http://leaflet.cloudmade.com/" target="_blank" alt="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade" title="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade">Leaflet</a></li>
-			<li>Repose sur Leaflet et <a href="http://www.openstreetmap.org/" target="_blank" alt="OpenStreetMap" title="OpenStreetMap">Open Street Map</a></li>
+			<li>Based on Leaflet and <a href="http://www.openstreetmap.org/" target="_blank" alt="OpenStreetMap" title="OpenStreetMap">Open Street Map</a></li>
 		    </ul>
 		</div>
 		<div class="facebook-box">
 		    <iframe src="http://www.facebook.com/plugins/likebox.php?id=124128901045591&amp;width=220&amp;connections=10&amp;stream=false&amp;header=false&amp;height=300" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:220px; height:300px;" allowtransparency="true"></iframe>
 		</div>
-		<h4>Démonstration</h4>
+		<h4>Demonstration</h4>
 		<ul class="tabs">
-		    <li class="first current"><a href="#media-example">Exemple</a></li>
-		    <li class=""><a href="#media-code">Code</a></li>
+		    <li class="first current"><a href="#media-example">Example</a></li>
+		    <li class=""><a href="#media-code">Code with osmLeaflet.jQuery</a></li>
+		    <li class=""><a href="#media-fullcode">With only the Leaflet API</a></li>
 		</ul>
 		<div id="media-example" class="tab-content clearfix" style="display: block; ">
-		    <div id="mini_map" style="height: 140px; width: 700px;"></div>
+		    <div id="mini_map" style="height: 140px; width: 800px;"></div>
 		</div>
 		<div id="media-code" class="tab-content clearfix" style="display: block; ">
-		    <pre class="js prettyprint">&lt;div id="mini_map" style="height: 140px; width: 700px;"&gt;&lt;/div&gt;
+		    <pre class="js prettyprint">&lt;div id="mini_map" style="height: 140px; width: 800px;"&gt;&lt;/div&gt;
+// Just provide a JSON object and runs. To create another instance: change the id passed to jQuery selector.
 $("#mini_map").osmLeaflet({
     zoom : 9,
     latitude : 48.833,
-    longitude : 2.333
-}).osmLeaflet('addPopup', {
-    latitude : 48.859,
     longitude : 2.333,
-    text : 'Hello !'
-});</pre>
+    popup : {
+	latitude : 48.859,
+	longitude : 2.333,
+	text : 'Hello !'
+    }
+});
+		    </pre>
 		</div>
-		<h4>Suivre</h4>
+		<div id="media-fullcode" class="tab-content clearfix" style="display: block; ">
+		    <pre class="js prettyprint">&lt;div id="mini_map" style="height: 140px; width: 800px;"&gt;&lt;/div&gt;
+// No JSON object, more verbose but not really readable, no? To create another instance: change the map var name and the selector.
+var map = new L.Map("mini_map"),
+    cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+	attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade'
+    }),
+    popup = new L.Popup();
+map.setView(new L.LatLng(48.833, 2.333, 9).addLayer(cloudmade);
+
+popup.setLatLng(new L.LatLng(48.859, 2.333));
+popup.setContent('Hello !');
+map.openPopup(popup);
+		    </pre>
+		</div>
+		<h4>Follow</h4>
 		<a href="https://github.com/MathRobin/osmLeaflet.jQuery" alt="Github" title="Github"><span class="icon social large blue" data-icon="i" title="Github" style="display: inline-block; "></span></a>
 		<a href="http://www.facebook.com/PluginOsmLeafletjQuery/" alt="Facebook" title="Facebook"><span class="icon social x-large blue" data-icon="F"></span></a>
-		<a class="button orange small" href="http://www.mathieurobin.com/tag/osmleaflet-jquery/feed/" alt="Flux RSS" title="Flux RSS"><span class="icon social" data-icon="r" style="display: inline-block; "></span> RSS</a>
+		<a class="button orange small" href="http://www.mathieurobin.com/tag/osmleaflet-jquery/feed/" alt="RSS feed" title="RSS feed"><span class="icon social" data-icon="r" style="display: inline-block; "></span> RSS</a>
 		<h4>Documentation</h4>
+		<ul>
+		    <li><a href="#methods_init">init (options)</a></li>
+		    <li><a href="#methods_addmarker">addMarker (options)</a></li>
+		    <li><a href="#methods_addpopup">addPopup (options)</a></li>
+		    <li><a href="#methods_onclick">onClick (callback)</a></li>
+		</ul>
+		<a name="methods_init"></a><h5><i>init (options)</i></h5>
+		<p>Create the map. Called by default.<br /><br />Take the following options:</p>
 		<table class="striped" cellspacing="0" cellpadding="0">
 		    <thead>
 			<tr class="alt first last">
-			    <th>Méthode</th>
+			    <th>Name</th>
+			    <th>Type</th>
+			    <th>Optionnal</th>
 			    <th>Description</th>
 			</tr>
 		    </thead>
 		    <tbody>
 			<tr class="first">
-			    <th>init</th>
-			    <td>Permet de mettre en place la carte. Appelée par défaut si pas de paramètres.<br /><br />Prend les options suivantes :
-				<table class="striped" cellspacing="0" cellpadding="0">
-				    <thead>
-					<tr class="alt first last">
-					    <th>Nom</th>
-					    <th>Type</th>
-					    <th>Obligatoire</th>
-					    <th>Description</th>
-					</tr>
-				    </thead>
-				    <tbody>
-					<tr class="first">
-					    <th>latitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr class="alt">
-					    <th>longitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr>
-					    <th>markers</th>
-					    <td>Tableau</td>
-					    <td>Non</td>
-					    <td>Contient la liste des markers que vous souhaitez mettre en place, avec leur caractéristiques.</td>
-					</tr>
-					<tr class="alt">
-					    <th>popups</th>
-					    <td>Tableau</td>
-					    <td>Non</td>
-					    <td>Contient la liste des popups que vous souhaitez mettre en place, avec leur caractéristiques.</td>
-					</tr>
-					<tr class="last">
-					    <th>zoom</th>
-					    <td>Nombre</td>
-					    <td>Non</td>
-					    <td>Niveau de zoom de la carte. Compris entre 1 et 18.</td>
-					</tr>
-				    </tbody>
-				</table>
-			    </td>
+			    <th>latitude</th>
+			    <td>Number</td>
+			    <td>No</td>
+			    <td>Map's latitude.</td>
 			</tr>
 			<tr class="alt">
-			    <th>addMarker</th>
-			    <td>Permet de placer un pointeur sur la carte.<br /><br />Prend les options suivantes :
-				<table class="striped" cellspacing="0" cellpadding="0">
-				    <thead>
-					<tr class="alt first last">
-					    <th>Nom</th>
-					    <th>Type</th>
-					    <th>Obligatoire</th>
-					    <th>Description</th>
-					</tr>
-				    </thead>
-				    <tbody>
-					<tr class="first">
-					    <th>latitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr class="last">
-					    <th>longitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-				    </tbody>
-				</table>
-			    </td>
+			    <th>longitude</th>
+			    <td>Number</td>
+			    <td>No</td>
+			    <td>Map's longitude.</td>
 			</tr>
-			<tr class="last">
-			    <th>addPopup</th>
-			    <td>Permet de placer une infobulle sur la carte.<br /><br />Prend les options suivantes :
-				<table class="striped" cellspacing="0" cellpadding="0">
-				    <thead>
-					<tr class="alt first last">
-					    <th>Nom</th>
-					    <th>Type</th>
-					    <th>Obligatoire</th>
-					    <th>Description</th>
-					</tr>
-				    </thead>
-				    <tbody>
-					<tr class="first">
-					    <th>content</th>
-					    <td>Chaîne</td>
-					    <td>Non</td>
-					    <td>Contenu textuel de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr class="alt">
-					    <th>latitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr>
-					    <th>longitude</th>
-					    <td>Nombre</td>
-					    <td>Oui</td>
-					    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
-					</tr>
-					<tr class="alt last">
-					    <th>zoom</th>
-					    <td>Nombre</td>
-					    <td>Non</td>
-					    <td>Niveau de zoom de la carte. Compris entre 1 et 18.</td>
-					</tr>
-				    </tbody>
-				</table>
-			    </td>
+			<tr>
+			    <th>markers</th>
+			    <td>Array</td>
+			    <td>Yes</td>
+			    <td>Contains a list of markers with their description</td>
+			</tr>
+			<tr class="alt">
+			    <th>onClick</th>
+			    <td>Function</td>
+			    <td>Yes</td>
+			    <td>Callback function which will be called on each click on the map. This function has the event object as parameter.</td>
+			</tr>
+			<tr>
+			    <th>popup</th>
+			    <td>Object</td>
+			    <td>Yes</td>
+			    <td>Popup's description</td>
+			</tr>
+			<tr class="alt last">
+			    <th>zoom</th>
+			    <td>Number</td>
+			    <td>Yes</td>
+			    <td>Map's zoom level. Between 1 and 18.</td>
 			</tr>
 		    </tbody>
 		</table>
+		<br />
+		<a name="methods_addmarker"></a><h5><i>addMarker (options)</i></h5>
+		<p>Allows to put one or more marker(s) on the map.<br /><br />Take the following options (or an array of these):</p>
+		<table class="striped" cellspacing="0" cellpadding="0">
+		    <thead>
+			<tr class="alt first last">
+			    <th>Name</th>
+			    <th>Type</th>
+			    <th>Optionnal</th>
+			    <th>Description</th>
+			</tr>
+		    </thead>
+		    <tbody>
+			<tr class="first">
+			    <th>click</th>
+			    <td>Objet</td>
+			    <td>Non</td>
+			    <td>Description of a popup which will be opened at the click on the marker.</td>
+			</tr>
+			<tr class="alt">
+			    <th>latitude</th>
+			    <td>Nombre</td>
+			    <td>Oui</td>
+			    <td>Marker's latitude.</td>
+			</tr>
+			<tr class="last">
+			    <th>longitude</th>
+			    <td>Nombre</td>
+			    <td>Oui</td>
+			    <td>Marker's longitude.</td>
+			</tr>
+		    </tbody>
+		</table>
+		<br />
+		<a name="methods_addpopup"></a><h5><i>addPopup (options)</i></h5>
+		<p>Allows to put a popup on the map. The Leaflet API doesn't allow to show more than one popup at a time on a map.<br /><br />Take the following options (or an array of these):</p>
+		<table class="striped" cellspacing="0" cellpadding="0">
+		    <thead>
+			<tr class="alt first last">
+			    <th>Name</th>
+			    <th>Type</th>
+			    <th>Optionnal</th>
+			    <th>Description</th>
+			</tr>
+		    </thead>
+		    <tbody>
+			<tr class="first">
+			    <th>content</th>
+			    <td>Chaîne</td>
+			    <td>Non</td>
+			    <td>Describes in HTML the popup's content</td>
+			</tr>
+			<tr class="alt">
+			    <th>latitude</th>
+			    <td>Nombre</td>
+			    <td>Oui</td>
+			    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+			</tr>
+			<tr>
+			    <th>longitude</th>
+			    <td>Nombre</td>
+			    <td>Oui</td>
+			    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+			</tr>
+			<tr class="alt">
+			    <th>autopan</th>
+			    <td>Booléen</td>
+			    <td>Non</td>
+			    <td>Par défaut à <i>true</i>. Permet de désactiver l'effet pan si vous le souhaiter quand la carte s'adapte à la position de la popup.</td>
+			</tr>
+			<tr class="last">
+			    <th>zoom</th>
+			    <td>Nombre</td>
+			    <td>Non</td>
+			    <td>Niveau de zoom de la carte. Compris entre 1 et 18.</td>
+			</tr>
+		    </tbody>
+		</table>
+		<br />
+		<a name="methods_onclick"></a><h5><i>onClick (callback)</i></h5>
+		<p>Appelle la fonction de callback passée en paramètre sur clic dans n'importe quelle région de la carte. Peut aussi prendre un objet de type <a href="http://www.jquery.com/Deferred" target="_blank" alt="jQuery - Deferred" title="jQuery - Deferred">Deferred</a>.<br /><br />Prend le paramètre suivant :</p>
+		<table class="striped" cellspacing="0" cellpadding="0">
+		    <thead>
+			<tr class="alt first last">
+			    <th>Name</th>
+			    <th>Type</th>
+			    <th>Optionnal</th>
+			    <th>Description</th>
+			</tr>
+		    </thead>
+		    <tbody>
+			<tr class="first">
+			    <th>callback <a href="#tips_onclick" alt="Voir plus bas" title="Voir plus bas">*</a></th>
+			    <td>Fonction</td>
+			    <td>Oui</td>
+			    <td>Fonction de callback appelée sur clic sur la carte.</td>
+			</tr>
+			<tr class="alt last">
+			    <th>callback <a href="#tips_onclick" alt="Voir plus bas" title="Voir plus bas">*</a></th>
+			    <td>Deferred</td>
+			    <td>Oui</td>
+			    <td>Objet de callback qui passera à l'état résolu sur clic sur la carte. Implique de n'être exécuté qu'une seule fois. Pour les spécificités liées à l'objet <a href="http://www.jquery.com/Deferred" target="_blank" alt="jQuery - Deferred" title="jQuery - Deferred">Deferred</a>, se référer à la documentation officielle.</td>
+			</tr>
+		    </tbody>
+		</table>
+		<a name="tips_onclick"></a><small>* L'un ou l'autre, au choix</small>
 	    </div>
 	    <div id="map2" style="height: 216px; width: 960px;"></div>
 	</div>
@@ -216,7 +272,7 @@ $("#mini_map").osmLeaflet({
 	<script>
 	    $(document).ready(function () {
 		$("#map1").osmLeaflet({
-		    zoom : 12,
+		    zoom : 10,
 		    latitude : 51.50,
 		    longitude : -0.09
 		}).osmLeaflet('addMarker', {
@@ -226,7 +282,16 @@ $("#mini_map").osmLeaflet({
 		    latitude : 51.51,
 		    longitude : -0.13,
 		    content : '<b>Hey !</b> Bienvenue sur le site de <a href="http://www.mathieurobin.com/osmLeaflet/" target="_blank">osmLeaflet.jQuery</a>'
-		});
+		}).osmLeaflet('addMarker', [{
+			latitude : 49.50,
+			longitude : -0.09
+		    },{
+			latitude : 49.40,
+			longitude : -0.09
+		    },{
+			latitude : 49.30,
+			longitude : -0.09
+		    }]);
 		$("#mini_map").osmLeaflet({
 		    zoom : 9,
 		    latitude : 48.833,

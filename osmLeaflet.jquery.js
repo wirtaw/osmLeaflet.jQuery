@@ -108,12 +108,16 @@
 	 *
 	 * @param callback function Event could be retrieved by the parameter
 	 * @return jQuery Object containing the DOM element extended
+	 * TODO: could take a Deferred object too
 	 */
 	onClick : function (callback) {
 	    return this.each(function () {
 		if("undefined" !== typeof callback) {
 		    if("function" === typeof callback) {
 			map.on('click', callback);
+		    }
+		    else if("Deferred" === typeof callback) {
+			map.on('click', function () {callback.resolve()});
 		    }
 		}
 	    });
