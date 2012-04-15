@@ -4,7 +4,7 @@
  *
  * @author Mathieu ROBIN
  * @link http://www.mathieurobin.com/osmLeaflet
- * @copyright CreativeCommons BY
+ * @copyright BSD License
  * @version 1.0
  */
 /*jslint browser: true, sloppy: true, white: true, maxerr: 50, indent: 4 */
