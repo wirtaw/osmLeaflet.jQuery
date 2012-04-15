@@ -202,39 +202,33 @@ map.openPopup(popup);
 		    <tbody>
 			<tr class="first">
 			    <th>content</th>
-			    <td>Chaîne</td>
-			    <td>Non</td>
+			    <td>String</td>
+			    <td>No</td>
 			    <td>Describes in HTML the popup's content</td>
 			</tr>
 			<tr class="alt">
 			    <th>latitude</th>
-			    <td>Nombre</td>
-			    <td>Oui</td>
-			    <td>Latitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+			    <td>Number</td>
+			    <td>No</td>
+			    <td>Popup's latitude.</td>
 			</tr>
 			<tr>
 			    <th>longitude</th>
-			    <td>Nombre</td>
-			    <td>Oui</td>
-			    <td>Longitude de la position de la carte ou de l'élément que vous souhaitez positionner.</td>
+			    <td>Number</td>
+			    <td>No</td>
+			    <td>Popup's longitude.</td>
 			</tr>
 			<tr class="alt">
 			    <th>autopan</th>
-			    <td>Booléen</td>
-			    <td>Non</td>
-			    <td>Par défaut à <i>true</i>. Permet de désactiver l'effet pan si vous le souhaiter quand la carte s'adapte à la position de la popup.</td>
-			</tr>
-			<tr class="last">
-			    <th>zoom</th>
-			    <td>Nombre</td>
-			    <td>Non</td>
-			    <td>Niveau de zoom de la carte. Compris entre 1 et 18.</td>
+			    <td>Boolean</td>
+			    <td>Yes</td>
+			    <td>The popup uses the pan effect when it appears on the map. Default value: <i>true</i>.</td>
 			</tr>
 		    </tbody>
 		</table>
 		<br />
 		<a name="methods_onclick"></a><h5><i>onClick (callback)</i></h5>
-		<p>Appelle la fonction de callback passée en paramètre sur clic dans n'importe quelle région de la carte. Peut aussi prendre un objet de type <a href="http://www.jquery.com/Deferred" target="_blank" alt="jQuery - Deferred" title="jQuery - Deferred">Deferred</a>.<br /><br />Prend le paramètre suivant :</p>
+		<p>Call the callback function gived as parameter on click event on any area of the map. Can take a <a href="http://www.jquery.com/Deferred" target="_blank" alt="jQuery - Deferred" title="jQuery - Deferred">Deferred</a> object instead of the function.<br /><br />Prend le paramètre suivant :</p>
 		<table class="striped" cellspacing="0" cellpadding="0">
 		    <thead>
 			<tr class="alt first last">
@@ -246,20 +240,20 @@ map.openPopup(popup);
 		    </thead>
 		    <tbody>
 			<tr class="first">
-			    <th>callback <a href="#tips_onclick" alt="Voir plus bas" title="Voir plus bas">*</a></th>
-			    <td>Fonction</td>
-			    <td>Oui</td>
-			    <td>Fonction de callback appelée sur clic sur la carte.</td>
+			    <th>callback <a href="#tips_onclick" alt="" title="">*</a></th>
+			    <td>Function</td>
+			    <td>No</td>
+			    <td>Callback function.</td>
 			</tr>
 			<tr class="alt last">
-			    <th>callback <a href="#tips_onclick" alt="Voir plus bas" title="Voir plus bas">*</a></th>
+			    <th>callback <a href="#tips_onclick" alt="" title="">*</a></th>
 			    <td>Deferred</td>
-			    <td>Oui</td>
-			    <td>Objet de callback qui passera à l'état résolu sur clic sur la carte. Implique de n'être exécuté qu'une seule fois. Pour les spécificités liées à l'objet <a href="http://www.jquery.com/Deferred" target="_blank" alt="jQuery - Deferred" title="jQuery - Deferred">Deferred</a>, se référer à la documentation officielle.</td>
+			    <td>No</td>
+			    <td>Deferred object which will be resolved at the click event.</td>
 			</tr>
 		    </tbody>
 		</table>
-		<a name="tips_onclick"></a><small>* L'un ou l'autre, au choix</small>
+		<a name="tips_onclick"></a><small>* Function or object, not the twice</small>
 	    </div>
 	    <div id="map2" style="height: 216px; width: 960px;"></div>
 	</div>
@@ -281,7 +275,7 @@ map.openPopup(popup);
 		}).osmLeaflet('addPopup', {
 		    latitude : 51.51,
 		    longitude : -0.13,
-		    content : '<b>Hey !</b> Bienvenue sur le site de <a href="http://www.mathieurobin.com/osmLeaflet/" target="_blank">osmLeaflet.jQuery</a>'
+		    content : '<b>Hey !</b> Welcome on <a href="http://www.mathieurobin.com/osmLeaflet/" target="_blank">osmLeaflet.jQuery</a> website'
 		}).osmLeaflet('addMarker', [{
 			latitude : 49.50,
 			longitude : -0.09
@@ -308,7 +302,7 @@ map.openPopup(popup);
 		}).osmLeaflet('addPopup', {
 		    latitude : 21.51,
 		    longitude : 22.54,
-		    content : 'Bonne journée !'
+		    content : 'Have a nice day!'
 		});
 	    });
 	</script>
