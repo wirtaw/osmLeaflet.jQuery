@@ -1,2 +1,24 @@
-Visitez : http://www.mathieurobin.com/osmLeaflet/
-Visit : http://www.mathieurobin.com/osmLeaflet/
+osmLeaflet.jQuery
+=================
+(English versions follows each time)
+
+Francophones, visitez : http://www.mathieurobin.com/osmLeaflet/
+English speaking, visit : http://www.mathieurobin.com/osmLeaflet/english_documentation.html
+
+Demo
+----
+Vous pouvez voir un exemple minimaliste d'utilisation ici :
+http://www.mathieurobin.com/osmLeaflet/minimal.html
+
+You can see a simple example of how to use it there :
+http://www.mathieurobin.com/osmLeaflet/minimal_english.html
+
+Licence
+-------
+osmLeaflet.jQuery est sous licence MIT. Faites en ce que vous voulez ;)
+N'oubliez pas de respecter la licence Open Database de Open Street Map : http://blog.osmfoundation.org/2012/09/12/openstreetmap-data-license-is-odbl/
+Et la Creative Commons BY de Leaflet : http://leaflet.cloudmade.com/
+
+osmLeaflet.jQuery is licencing under MIT Licence. Feel free to use it as you want ;)
+Don't forget to respect the Open Database Licence of Open Street Map : http://blog.osmfoundation.org/2012/09/12/openstreetmap-data-license-is-odbl/
+And the Creative Commons BY of Leaflet : http://leaflet.cloudmade.com/

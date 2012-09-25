@@ -72,9 +72,9 @@
 					var marker = null, markerLocation = null;
 					if ("undefined" !== typeof options) {
 						if ("undefined" === typeof options.length) {
-							var marker = L.marker([options.latitude, options.longitude]).addTo(map);
+							marker = L.marker([options.latitude, options.longitude]).addTo(map);
 							if ("undefined" !== typeof options.click) {
-								marker.bindPopup(options.click).openPopup();
+								marker.bindPopup(options.click);
 							}
 						}
 						else {
@@ -96,7 +96,7 @@
 					if ("undefined" !== typeof options) {
 						var popup = new L.Popup()
 							.setLatLng(new L.LatLng(options.latitude, options.longitude))
-							.setContent(options.text)
+							.setContent(options.content)
 							.openOn(map);
 					}
 				});

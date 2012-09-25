@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>osmLeaflet.jQuery, plugin jQuery pour Open Street Map</title>
+    <title>osmLeaflet.jQuery, plugin jQuery for Open Street Map</title>
     <link href="http://leaflet.cloudmade.com/dist/leaflet.css" rel="stylesheet"/>
 </head>
 <body>
-<p>Pour comprendre, merci de regarder les commentaires du code source.</p>
+<p>Please, have a look into source comments to understand</p>
 <br />
 <div id="map" style="height: 700px; width: 960px;"></div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
@@ -13,33 +13,33 @@
 <script type="text/javascript" src="osmLeaflet.jquery.js"></script>
 <script>
     $(document).ready(function () {
-        // Mise en cache de l'élément de destination de la map
+        // Caching of the map
         var $map = $("#map");
-        // Mise en place de la map
+        // Intanstiation of th map
         $map.osmLeaflet({
             zoom      : 9,
             latitude  : 51.50,
             longitude : -0.09
         });
-        // Placement d'un marqueur seul
+        // Add a single marker
         $map.osmLeaflet('addMarker', {
             latitude  : 51.50,
             longitude : -0.09
         });
-        // Placement d'une popup
+        // add a popup
         $map.osmLeaflet('addPopup', {
             latitude  : 51.74,
             longitude : -0.17,
-            // Les popups leaflet supportent le contenu HTML
+            // Leaflet popups supports HTML content
             content   : '<b>Hello !</b>',
             autoPan   : true
         });
-        // Placement de plusieurs marqueurs en une seule fois
+        // Add more than one markers at a time
         $map.osmLeaflet('addMarker', [
             {
                 latitude  : 51.40,
                 longitude : 0.15,
-                click : 'Marker 1 sur 2'
+                click : 'Marker 1 of 2'
             },
             {
                 latitude  : 51.40,
