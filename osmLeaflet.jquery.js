@@ -6,7 +6,7 @@
  * @author Mathieu ROBIN
  * @link http://www.mathieurobin.com/osmLeaflet
  * @copyright MIT License
- * @version 1.1
+ * @version 1.2
  */
 /*jslint browser: true, sloppy: true, white: true, maxerr: 50, indent: 4 */
 (function ($) {
