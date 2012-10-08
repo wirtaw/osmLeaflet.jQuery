@@ -69,10 +69,13 @@
 			addMarker : function (options) {
 				var that = this;
 				return this.each(function () {
-					var marker = null, markerLocation = null;
+					var marker = null, markerLocation = null, otherOptions = {};
 					if ("undefined" !== typeof options) {
 						if ("undefined" === typeof options.length) {
-							marker = L.marker([options.latitude, options.longitude]).addTo(map);
+							if ("undefined" !== typeof options.icon) {
+								otherOptions.icon = L.icon(options.icon);
+							}
+							marker = L.marker([options.latitude, options.longitude], otherOptions).addTo(map);
 							if ("undefined" !== typeof options.click) {
 								marker.bindPopup(options.click);
 							}
