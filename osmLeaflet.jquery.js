@@ -9,6 +9,7 @@
  * @version 1.2
  */
 /*jslint browser: true, sloppy: true, white: true, maxerr: 50, indent: 4 */
+/*global $, jQuery */
 (function ($) {
 	// Default values
 	var defaults = {
@@ -109,7 +110,6 @@
 			 *
 			 * @param callback function Event could be retrieved by the parameter
 			 * @return jQuery Object containing the DOM element extended
-			 * TODO: could take a Deferred object too
 			 */
 			onClick   : function (callback) {
 				return this.each(function () {
@@ -119,7 +119,7 @@
 						}
 						else if ("Deferred" === typeof callback) {
 							map.on('click', function () {
-								callback.resolve()
+								callback.resolve();
 							});
 						}
 					}
