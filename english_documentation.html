@@ -49,7 +49,7 @@
 <div class="col_4">
     <ul class="checks">
         <li>Choose the zoom level at initialization</li>
-        <li>And play with the wheel and map's buttons</li>
+        <li>Then, play with the wheel mouse or zoom buttons</li>
         <li>Put markers</li>
         <li>Put a popup</li>
         <li>Give it a rich HTML content</li>
@@ -62,7 +62,7 @@
         <li>Manage maps easily</li>
         <li>BSD Licence, do what you want</li>
         <li>Without any constraints</li>
-        <li>Simplified API in comparison of <a href="http://leaflet.cloudmade.com/" target="_blank" alt="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade" title="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade">Leaflet</a></li>
+        <li>Simplified API in comparison to <a href="http://leaflet.cloudmade.com/" target="_blank" alt="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade" title="Leaflet - a modern, lightweight JavaScript library for interactive maps by CloudMade">Leaflet</a></li>
         <li>Based on Leaflet and <a href="http://www.openstreetmap.org/" target="_blank" alt="OpenStreetMap" title="OpenStreetMap">Open Street Map</a></li>
     </ul>
 </div>
@@ -80,7 +80,7 @@
 </div>
 <div id="media-code" class="tab-content clearfix" style="display: block; ">
 		    <pre class="js prettyprint">&lt;div id="mini_map" style="height: 140px; width: 800px;"&gt;&lt;/div&gt;
-// Just provide a JSON object and runs. To create another instance: change the id passed to jQuery selector.
+// Just provide a JSON object and go for it! To create another instance: change the id sent to jQuery selector.
 $("#mini_map").osmLeaflet({
     zoom : 9,
     latitude : 48.833,
@@ -125,7 +125,7 @@ map.openPopup(popup);
 </ul>
 <a name="methods_init"></a><h5><i>init (options)</i></h5>
 
-<p>Create the map. Called by default.<br/><br/>Take the following options:</p>
+<p>Create the map. Called by default if no parameters are passed.<br/><br/>Takes the following options:</p>
 <table class="striped" cellspacing="0" cellpadding="0">
     <thead>
     <tr class="alt first last">
@@ -152,7 +152,7 @@ map.openPopup(popup);
         <th>markers</th>
         <td>Array</td>
         <td>Yes</td>
-        <td>Contains a list of markers with their description</td>
+        <td>Contains a list of markers with their description.</td>
     </tr>
     <tr class="alt">
         <th>onClick</th>
@@ -177,7 +177,7 @@ map.openPopup(popup);
 <br/>
 <a name="methods_addmarker"></a><h5><i>addMarker (options)</i></h5>
 
-<p>Allows to put one or more marker(s) on the map.<br/><br/>Take the following options (or an array of these):</p>
+<p>Allows to put one or more marker(s) on the map.<br/><br/>Takes the following options (or an array of these):</p>
 <table class="striped" cellspacing="0" cellpadding="0">
     <thead>
     <tr class="alt first last">
@@ -192,7 +192,7 @@ map.openPopup(popup);
         <th>click</th>
         <td>Object</td>
         <td>No</td>
-        <td>Description of a popup which will be opened at the click on the marker.</td>
+        <td>Description of a popup which will be opened when clicking on the marker.</td>
     </tr>
     <tr class="alt">
         <th>latitude</th>
@@ -211,7 +211,7 @@ map.openPopup(popup);
 <br/>
 <a name="methods_addpopup"></a><h5><i>addPopup (options)</i></h5>
 
-<p>Allows to put a popup on the map. The Leaflet API doesn't allow to show more than one popup at a time on a map.<br/><br/>Take the following options (or an array of these):</p>
+<p>Allows to put a popup on the map. Leaflet API doesn't allow to show more than one popup at a time on a map.<br/><br/>Takes the following options (or an array of these):</p>
 <table class="striped" cellspacing="0" cellpadding="0">
     <thead>
     <tr class="alt first last">
@@ -226,7 +226,7 @@ map.openPopup(popup);
         <th>content</th>
         <td>String</td>
         <td>No</td>
-        <td>Describes in HTML the popup's content</td>
+        <td>Describes, in HTML, the popup's content</td>
     </tr>
     <tr class="alt">
         <th>latitude</th>
@@ -251,7 +251,7 @@ map.openPopup(popup);
 <br/>
 <a name="methods_onclick"></a><h5><i>onClick (callback)</i></h5>
 
-<p>Call the callback function gived as parameter on click event on any area of the map. Can take a <a href="http://www.jquery.com/Deferred" target="_blank" alt="jQuery - Deferred" title="jQuery - Deferred">Deferred</a> object instead of the function.<br/><br/>Take the following parameter:</p>
+<p>Call the callback function given as a parameter of the click event on any area of the map. Can take an <a href="http://www.jquery.com/Deferred" target="_blank" alt="jQuery - Deferred" title="jQuery - Deferred">Deferred</a> object instead of the function.<br/><br/>Takes the following parameter:</p>
 <table class="striped" cellspacing="0" cellpadding="0">
     <thead>
     <tr class="alt first last">
@@ -277,7 +277,7 @@ map.openPopup(popup);
     </tbody>
 </table>
 <a name="tips_onclick"></a>
-<small>* Function or object, not the twice</small>
+<small>* Function or object, not both</small>
 </div>
 <div id="map2" style="height: 216px; width: 960px;"></div>
 </div>
